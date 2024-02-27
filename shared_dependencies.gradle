@@ -1,0 +1,20 @@
+dependencies {
+
+    implementation("androidx.appcompat:appcompat:$rootProject.ext.appcompat_version")
+    implementation ("androidx.core:core-ktx:$rootProject.ext.core_ktx_version")
+    implementation("androidx.constraintlayout:constraintlayout:$rootProject.ext.constraint_version")
+    implementation ("androidx.legacy:legacy-support-v4:$rootProject.ext.legacy_support_version")
+    testImplementation("junit:junit:$rootProject.ext.junit_version")
+    androidTestImplementation("androidx.test.ext:junit:$rootProject.ext.androidx_junit_version")
+    androidTestImplementation("androidx.test.espresso:espresso-core:$rootProject.ext.espresso_version")
+    implementation ("androidx.multidex:multidex:$rootProject.ext.multidex_version")
+
+    implementation ("androidx.cardview:cardview:$rootProject.ext.cardview_version")
+    implementation ("androidx.recyclerview:recyclerview:$rootProject.ext.recyclerview_version")
+    implementation("com.google.android.material:material:$rootProject.ext.material_version")
+    implementation ("com.github.bumptech.glide:glide:$rootProject.ext.glide_version")
+
+    implementation ("io.insert-koin:koin-core:$rootProject.ext.koin_version")
+    implementation ("io.insert-koin:koin-android:$rootProject.ext.koin_version")
+
+}
