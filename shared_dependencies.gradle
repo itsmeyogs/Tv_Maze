@@ -17,4 +17,5 @@ dependencies {
     implementation ("io.insert-koin:koin-core:$rootProject.ext.koin_version")
     implementation ("io.insert-koin:koin-android:$rootProject.ext.koin_version")
 
+    debugImplementation ("com.squareup.leakcanary:leakcanary-android:$rootProject.ext.leakcanary_version")
 }

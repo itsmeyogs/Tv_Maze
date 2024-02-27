@@ -27,6 +27,11 @@ buildscript {
         set("jsoup_version", "1.14.3")
 
         set("koin_version", "3.5.3")
+
+        set("leakcanary_version","2.13")
+        set("sqlcipher_version","4.4.0")
+        set("sqlite_version","2.4.0")
+
     }
 
     repositories {

@@ -47,6 +47,8 @@ dependencies {
     val kotlin_coroutines_version = rootProject.extra["kotlin_coroutines_version"]
     val lifecycle_version = rootProject.extra["lifecycle_version"]
     val jsoup_version = rootProject.extra["jsoup_version"]
+    val sqlcipher_version = rootProject.extra["sqlcipher_version"]
+    val sqlite_version = rootProject.extra["sqlite_version"]
 
 
 
@@ -67,4 +69,7 @@ dependencies {
     api ("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
 
     implementation ("org.jsoup:jsoup:$jsoup_version")
+
+    implementation ("net.zetetic:android-database-sqlcipher:$sqlcipher_version")
+    implementation ("androidx.sqlite:sqlite-ktx:$sqlite_version")
 }

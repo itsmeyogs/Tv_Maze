@@ -1,6 +1,5 @@
 package com.yogi.tvmazeapp.core.di
 
-import android.os.Build
 import androidx.multidex.BuildConfig
 import androidx.room.Room
 import com.yogi.tvmazeapp.core.data.source.TvMazeRepository
@@ -10,6 +9,8 @@ import com.yogi.tvmazeapp.core.data.source.remote.RemoteDataSource
 import com.yogi.tvmazeapp.core.data.source.remote.network.ApiService
 import com.yogi.tvmazeapp.core.domain.repository.ITvMazeRepository
 import com.yogi.tvmazeapp.core.utils.AppExecutors
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -21,10 +22,14 @@ import java.util.concurrent.TimeUnit
 val databaseModule = module {
     factory { get<TvMazeDatabase>().tvMazeDao() }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("yogi".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             TvMazeDatabase::class.java, "TvMaze.db"
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 
