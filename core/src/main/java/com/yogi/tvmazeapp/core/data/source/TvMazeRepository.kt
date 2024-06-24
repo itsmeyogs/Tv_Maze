@@ -25,7 +25,7 @@ class TvMazeRepository(
                 }
             }
 
-            override fun shouldFetch(data: List<TvMaze>?): Boolean = data == null || data.isEmpty()
+            override fun shouldFetch(data: List<TvMaze>?): Boolean = data.isNullOrEmpty()
 
             override suspend fun createCall(): Flow<ApiResponse<List<ShowsResponseItem>>> = remoteDataSource.getAllShow()
 

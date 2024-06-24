@@ -19,7 +19,7 @@ class FavoriteFragment : Fragment() {
     private val favoriteViewModel: FavoriteViewModel by viewModel()
 
     private var _binding: FragmentFavoriteBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding ?: throw IllegalStateException("ViewBinding null")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -12,10 +12,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailActivity : AppCompatActivity() {
 
-    companion object{
-        const val EXTRA_DETAIL = "extra_detail"
-    }
-
     private val detailViewModel : DetailViewModel by viewModel()
     private lateinit var binding : ActivityDetailBinding
 
@@ -62,5 +58,9 @@ class DetailActivity : AppCompatActivity() {
         } else {
             binding.fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_not_favorite_white))
         }
+    }
+
+    companion object{
+        const val EXTRA_DETAIL = "extra_detail"
     }
 }

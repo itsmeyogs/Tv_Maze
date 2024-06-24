@@ -1,6 +1,6 @@
 package com.yogi.tvmazeapp.core.di
 
-import androidx.multidex.BuildConfig
+import com.yogi.tvmazeapp.core.BuildConfig
 import androidx.room.Room
 import com.yogi.tvmazeapp.core.data.source.TvMazeRepository
 import com.yogi.tvmazeapp.core.data.source.local.LocalDataSource
@@ -51,7 +51,7 @@ val networkModule = module {
     }
     single {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.tvmaze.com/")
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(get())
             .build()

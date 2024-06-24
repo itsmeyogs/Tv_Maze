@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         minSdk = 24
-
+        buildConfigField("String", "BASE_URL", "\"https://api.tvmaze.com\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -37,39 +37,40 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
 dependencies {
-    val room_version = rootProject.extra["room_version"]
-    val retrofit_version = rootProject.extra["retrofit_version"]
-    val logging_interceptor_version = rootProject.extra["logging_interceptor_version"]
-    val kotlin_coroutines_version = rootProject.extra["kotlin_coroutines_version"]
-    val lifecycle_version = rootProject.extra["lifecycle_version"]
-    val jsoup_version = rootProject.extra["jsoup_version"]
-    val sqlcipher_version = rootProject.extra["sqlcipher_version"]
-    val sqlite_version = rootProject.extra["sqlite_version"]
+    val roomVersion = rootProject.extra["room_version"]
+    val retrofitVersion = rootProject.extra["retrofit_version"]
+    val loggingInterceptorVersion = rootProject.extra["logging_interceptor_version"]
+    val kotlinCoroutinesVersion = rootProject.extra["kotlin_coroutines_version"]
+    val lifecycleVersion = rootProject.extra["lifecycle_version"]
+    val jsoupVersion = rootProject.extra["jsoup_version"]
+    val sqlcipherVersion = rootProject.extra["sqlcipher_version"]
+    val sqliteVersion = rootProject.extra["sqlite_version"]
 
 
 
     //noinspection GradleDependency
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation ("androidx.room:room-runtime:$room_version")
-    ksp ("androidx.room:room-compiler:$room_version")
-    androidTestImplementation ("androidx.room:room-testing:$room_version")
+    implementation ("androidx.room:room-runtime:$roomVersion")
+    ksp ("androidx.room:room-compiler:$roomVersion")
+    androidTestImplementation ("androidx.room:room-testing:$roomVersion")
 
-    implementation ("com.squareup.retrofit2:retrofit:$retrofit_version")
-    implementation ("com.squareup.retrofit2:converter-gson:$retrofit_version")
-    implementation ("com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version")
+    implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    implementation ("com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion")
 
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version")
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version")
-    implementation ("androidx.room:room-ktx:$room_version")
-    api ("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutinesVersion")
+    implementation ("androidx.room:room-ktx:$roomVersion")
+    api ("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
 
-    implementation ("org.jsoup:jsoup:$jsoup_version")
+    implementation ("org.jsoup:jsoup:$jsoupVersion")
 
-    implementation ("net.zetetic:android-database-sqlcipher:$sqlcipher_version")
-    implementation ("androidx.sqlite:sqlite-ktx:$sqlite_version")
+    implementation ("net.zetetic:android-database-sqlcipher:$sqlcipherVersion")
+    implementation ("androidx.sqlite:sqlite-ktx:$sqliteVersion")
 }

@@ -17,9 +17,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
-    private val homeViewModel : HomeViewModel by viewModel()
-    private var _binding: FragmentHomeBinding ?= null
-    private val binding get() = _binding!!
+    private val homeViewModel: HomeViewModel by viewModel()
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding ?: throw IllegalStateException("ViewBinding null")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,9 +31,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (activity!=null){
+        if (activity != null) {
             val tvMazeAdapter = TvMazeAdapter()
-            tvMazeAdapter.onItemClick ={data->
+            tvMazeAdapter.onItemClick = { data ->
                 val intent = Intent(activity, DetailActivity::class.java)
                 intent.putExtra(DetailActivity.EXTRA_DETAIL, data)
                 startActivity(intent)
@@ -41,15 +41,17 @@ class HomeFragment : Fragment() {
 
             homeViewModel.listShow.observe(viewLifecycleOwner) {
                 if (it != null) {
-                    when(it){
-                        is Resource.Loading ->{
+                    when (it) {
+                        is Resource.Loading -> {
                             binding.progressBar.visibility = View.VISIBLE
                         }
-                        is Resource.Success->{
+
+                        is Resource.Success -> {
                             binding.progressBar.visibility = View.GONE
                             tvMazeAdapter.setData(it.data)
                         }
-                        is Resource.Error->{
+
+                        is Resource.Error -> {
                             binding.progressBar.visibility = View.GONE
                             binding.viewError.root.visibility = View.VISIBLE
                             binding.viewError.tvError.text = it.message ?: getString(R.string.error)
@@ -57,7 +59,7 @@ class HomeFragment : Fragment() {
                     }
                 }
             }
-            with(binding.rvShow){
+            with(binding.rvShow) {
                 layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
                 adapter = tvMazeAdapter
             }
