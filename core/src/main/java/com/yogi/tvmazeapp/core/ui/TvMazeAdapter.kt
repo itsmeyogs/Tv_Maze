@@ -1,6 +1,5 @@
 package com.yogi.tvmazeapp.core.ui
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,9 +7,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.yogi.tvmazeapp.core.R
-import com.yogi.tvmazeapp.core.domain.model.TvMaze
 import com.yogi.tvmazeapp.core.databinding.ItemListShowBinding
-import java.util.ArrayList
+import com.yogi.tvmazeapp.core.domain.model.TvMaze
 
 class TvMazeAdapter : RecyclerView.Adapter<TvMazeAdapter.ListViewHolder>() {
 
@@ -48,13 +46,9 @@ class TvMazeAdapter : RecyclerView.Adapter<TvMazeAdapter.ListViewHolder>() {
                     .into(ivItemImage)
                 tvItemName.text = data.name
                 tvItemGenres.text = data.genres
-            }
-        }
-
-        init {
-            binding.root.setOnClickListener {
-                @Suppress("DEPRECATION")
-                onItemClick?.invoke(listData[adapterPosition])
+                root.setOnClickListener {
+                    onItemClick?.invoke(data)
+                }
             }
         }
     }

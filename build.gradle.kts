@@ -23,7 +23,7 @@ buildscript {
         set("retrofit_version","2.9.0")
         set("logging_interceptor_version","4.12.0")
         set("kotlin_coroutines_version","1.8.0")
-        set("lifecycle_version","2.7.0")
+        set("lifecycle_version","2.8.2")
         set("jsoup_version", "1.14.3")
 
         set("koin_version", "3.5.3")
@@ -40,7 +40,7 @@ buildscript {
 
     }
     dependencies {
-        classpath ("com.android.tools.build:gradle:8.2.0")
+        classpath ("com.android.tools.build:gradle:8.2.2")
         val kotlinVersion = rootProject.extra["kotlin_version"]
         classpath ("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
         classpath("com.google.devtools.ksp:symbol-processing-gradle-plugin:1.9.10-1.0.13")
